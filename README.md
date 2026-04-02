@@ -82,6 +82,19 @@ pip install -r requirements.txt
 python3 robby.py
 ```
 
+## Before Running
+
+- Update the BCM pin definitions in `robby.py` if your chassis wiring differs from the exported project file.
+- Use Raspberry Pi OS with the GPIO libraries available on-device; this script is not designed for desktop execution.
+- Test the motors and ultrasonic sensor independently before placing the robot on the line course.
+
+## Tested Environment
+
+- Raspberry Pi 4
+- Python 3 on Raspberry Pi OS
+- `gpiozero` and `RPi.GPIO` available on the target device
+- Physical line course with black tape and an `HC-SR04` obstacle check in front of the chassis
+
 ## Repository Contents
 
 ```text

@@ -32,12 +32,19 @@ Important implementation detail:
 - If either line sensor is active, the robot moves forward.
 - If both line sensors are inactive, the robot stops.
 
-## Product Photos
+## Control Flow From The Real Script
 
 <p align="center">
-  <img src="docs/assets/robot-hero.png" alt="Robot following a black guide line" width="44%">
-  <img src="docs/assets/robot-gallery.png" alt="Gallery showing the robot hardware from multiple angles" width="52%">
+  <img src="docs/assets/control-flow.png" alt="Control flow diagram reconstructed directly from robby.py" width="100%">
 </p>
+
+This flow mirrors the actual branch order in `motor_control()`:
+
+1. Measure ultrasonic distance.
+2. Read both line sensors.
+3. Stop when both sensors lose the line and no close obstacle is present.
+4. Stop and trigger both LEDs plus the buzzer when the obstacle threshold is crossed.
+5. Otherwise, move forward if either line sensor still sees the track.
 
 ## Hardware Used In The Script
 
@@ -62,14 +69,6 @@ Important implementation detail:
 | Right line sensor | 27 |
 | Left motor pins | 7, 8 |
 | Right motor pins | 9, 10 |
-
-## Core Behavior Flow
-
-1. Measure distance through the ultrasonic sensor.
-2. Read both line sensors.
-3. If both sensors are off the line and there is no close obstacle, stop the motors.
-4. If the obstacle distance is below `10 cm`, stop the robot, light both LEDs, and play the buzzer.
-5. If at least one line sensor sees the line, drive forward.
 
 ## Run On Raspberry Pi
 
@@ -99,3 +98,5 @@ python3 robby.py
 ## Validation
 
 GitHub Actions runs a lightweight syntax check with `python -m py_compile robby.py` on every push and pull request.
+
+That validation stays intentionally minimal because the script depends on Raspberry Pi hardware libraries and GPIO access at runtime.

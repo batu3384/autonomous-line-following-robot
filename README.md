@@ -31,6 +31,8 @@ Important implementation detail:
 - The current script does not apply left/right correction.
 - If either line sensor is active, the robot moves forward.
 - If both line sensors are inactive, the robot stops.
+- The obstacle branch uses `distance < 10`, not `distance <= 10`.
+- The `time.sleep(0.05)` delay runs only on the non-`continue` path at the end of the loop.
 
 ## Control Flow From The Real Script
 
@@ -43,8 +45,9 @@ This flow mirrors the actual branch order in `motor_control()`:
 1. Measure ultrasonic distance.
 2. Read both line sensors.
 3. Stop when both sensors lose the line and no close obstacle is present.
-4. Stop and trigger both LEDs plus the buzzer when the obstacle threshold is crossed.
+4. Stop and trigger both LEDs plus the buzzer only when `distance < 10`.
 5. Otherwise, move forward if either line sensor still sees the track.
+6. If neither sensor sees the track after those checks, stay stopped with both LEDs off.
 
 ## Hardware Used In The Script
 

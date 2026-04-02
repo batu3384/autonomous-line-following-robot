@@ -37,6 +37,7 @@
       .label { fill: #758099; font-family: "Courier New", monospace; font-size: 15px; font-weight: 700; letter-spacing: 0.12em; }
       .cardTitle { fill: #1E2A40; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 30px; font-weight: 700; }
       .cardBody { fill: #556176; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 20px; }
+      .actionBody { fill: #556176; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 18px; }
       .sideTitle { fill: #1E2A40; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 24px; font-weight: 700; }
       .sideBody { fill: #5C677B; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 18px; }
       .diamondText { fill: #1F2B3F; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 24px; font-weight: 700; text-anchor: middle; }
@@ -115,15 +116,15 @@
   <text x="1031" y="588" class="branch">YES</text>
 
   <g filter="url(#cardShadow)">
-    <rect x="1100" y="540" width="356" height="126" rx="24" fill="#FFF9F1" stroke="#D78A30" stroke-width="3"/>
-    <rect x="1242" y="692" width="148" height="44" rx="16" fill="#F7EFE4" stroke="#D8C8B5"/>
+    <rect x="1100" y="540" width="356" height="138" rx="24" fill="#FFF9F1" stroke="#D78A30" stroke-width="3"/>
+    <rect x="1268" y="704" width="126" height="42" rx="16" fill="#F7EFE4" stroke="#D8C8B5"/>
   </g>
   <text x="1132" y="578" class="label">01</text>
   <text x="1132" y="614" class="cardTitle">Stop and continue</text>
-  <text x="1132" y="644" class="cardBody">robot.stop() + LEDs low.</text>
-  <text x="1132" y="670" class="cardBody">Immediate restart.</text>
-  <text x="1264" y="720" class="chipText">continue</text>
-  <path d="M1428 666V684" stroke="#D78A30" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowAmber)"/>
+  <text x="1132" y="644" class="actionBody">robot.stop() + LEDs low.</text>
+  <text x="1132" y="668" class="actionBody">Immediate restart.</text>
+  <text x="1290" y="731" class="chipText">continue</text>
+  <path d="M1332 678V698" stroke="#D78A30" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowAmber)"/>
 
   <path d="M830 706V804" stroke="#476C9E" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowNavy)"/>
   <rect x="794" y="742" width="48" height="28" rx="14" fill="#6E7C94"/>
@@ -138,15 +139,15 @@
   <text x="1031" y="896" class="branch">YES</text>
 
   <g filter="url(#cardShadow)">
-    <rect x="1100" y="852" width="356" height="154" rx="24" fill="#FFF9F1" stroke="#D4654F" stroke-width="3"/>
-    <rect x="1242" y="1032" width="148" height="44" rx="16" fill="#F7EFE4" stroke="#D8C8B5"/>
+    <rect x="1100" y="852" width="356" height="156" rx="24" fill="#FFF9F1" stroke="#D4654F" stroke-width="3"/>
+    <rect x="1268" y="1038" width="126" height="42" rx="16" fill="#F7EFE4" stroke="#D8C8B5"/>
   </g>
   <text x="1132" y="890" class="label">02</text>
   <text x="1132" y="926" class="cardTitle">Obstacle stop</text>
-  <text x="1132" y="956" class="cardBody">robot.stop() + LEDs high.</text>
-  <text x="1132" y="984" class="cardBody">horn_sound(), then restart.</text>
-  <text x="1264" y="1060" class="chipText">continue</text>
-  <path d="M1428 1006V1024" stroke="#D4654F" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowCoral)"/>
+  <text x="1132" y="956" class="actionBody">robot.stop() + LEDs high.</text>
+  <text x="1132" y="980" class="actionBody">horn_sound(), then restart.</text>
+  <text x="1290" y="1065" class="chipText">continue</text>
+  <path d="M1332 1008V1030" stroke="#D4654F" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowCoral)"/>
 
   <path d="M830 1014V1110" stroke="#476C9E" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowNavy)"/>
   <rect x="794" y="1050" width="48" height="28" rx="14" fill="#6E7C94"/>

@@ -187,6 +187,6 @@
   </g>
   <text x="706" y="1358" class="chipText">time.sleep(0.05)</text>
 
-  <path d="M646 1350H430V594H450" stroke="#476C9E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10" marker-end="url(#arrowNavy)"/>
+  <path d="M646 1350H430V594" stroke="#476C9E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10"/>
   <text x="428" y="632" class="loopText" transform="rotate(-90 428 632)">next loop cycle</text>
 </svg>

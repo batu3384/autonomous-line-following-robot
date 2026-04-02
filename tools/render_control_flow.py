@@ -9,58 +9,57 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "docs" / "assets" / "control-flow.png"
 
 WIDTH = 1680
-HEIGHT = 1360
+HEIGHT = 1280
 
 BG = (247, 243, 236)
 SURFACE = (255, 255, 255)
 SURFACE_SOFT = (244, 239, 230)
 NAVY = (29, 42, 57)
-SLATE = (90, 102, 116)
-ACCENT = (169, 151, 123)
-BORDER = (224, 216, 204)
+SLATE = (91, 102, 116)
+ACCENT = (166, 148, 121)
+BORDER = (223, 215, 203)
 GREEN = (228, 242, 235)
 RED = (248, 233, 229)
 BLUE = (232, 240, 246)
-SHADOW = (226, 217, 205)
+SHADOW = (228, 219, 207)
 
 
-def load_font(path: str, size: int) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
+def font(path: str, size: int) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     try:
         return ImageFont.truetype(path, size)
     except Exception:
         return ImageFont.load_default()
 
 
-FONT_TITLE = load_font("/System/Library/Fonts/Supplemental/Arial Bold.ttf", 46)
-FONT_SUBTITLE = load_font("/System/Library/Fonts/Supplemental/Arial.ttf", 24)
-FONT_CARD_TITLE = load_font("/System/Library/Fonts/Supplemental/Arial Bold.ttf", 24)
-FONT_BODY = load_font("/System/Library/Fonts/Supplemental/Arial.ttf", 20)
-FONT_TAG = load_font("/System/Library/Fonts/Supplemental/Arial Bold.ttf", 18)
+FONT_TITLE = font("/System/Library/Fonts/Supplemental/Arial Bold.ttf", 46)
+FONT_SUBTITLE = font("/System/Library/Fonts/Supplemental/Arial.ttf", 24)
+FONT_CARD_TITLE = font("/System/Library/Fonts/Supplemental/Arial Bold.ttf", 24)
+FONT_BODY = font("/System/Library/Fonts/Supplemental/Arial.ttf", 20)
+FONT_TAG = font("/System/Library/Fonts/Supplemental/Arial Bold.ttf", 18)
 
 
-def draw_shadowed_round_rect(
+def shadow_card(
     draw: ImageDraw.ImageDraw,
     box: tuple[int, int, int, int],
-    fill: tuple[int, int, int],
+    fill: tuple[int, int, int] = SURFACE,
     radius: int = 28,
-    shadow_offset: int = 8,
 ) -> None:
     x1, y1, x2, y2 = box
-    draw.rounded_rectangle((x1, y1 + shadow_offset, x2, y2 + shadow_offset), radius=radius, fill=SHADOW)
+    draw.rounded_rectangle((x1, y1 + 8, x2, y2 + 8), radius=radius, fill=SHADOW)
     draw.rounded_rectangle(box, radius=radius, fill=fill)
 
 
-def draw_wrapped_lines(
+def write_lines(
     draw: ImageDraw.ImageDraw,
-    x: int,
-    y: int,
+    start: tuple[int, int],
     lines: list[str],
-    font: ImageFont.ImageFont,
+    font_obj: ImageFont.ImageFont,
     fill: tuple[int, int, int],
-    gap: int = 32,
+    gap: int = 30,
 ) -> None:
+    x, y = start
     for line in lines:
-        draw.text((x, y), line, font=font, fill=fill)
+        draw.text((x, y), line, font=font_obj, fill=fill)
         y += gap
 
 
@@ -71,10 +70,10 @@ def card(
     lines: list[str],
     fill: tuple[int, int, int] = SURFACE,
 ) -> None:
-    draw_shadowed_round_rect(draw, box, fill)
+    shadow_card(draw, box, fill=fill)
     x1, y1, _, _ = box
-    draw.text((x1 + 24, y1 + 22), title, font=FONT_CARD_TITLE, fill=NAVY)
-    draw_wrapped_lines(draw, x1 + 24, y1 + 66, lines, FONT_BODY, SLATE)
+    draw.text((x1 + 24, y1 + 20), title, font=FONT_CARD_TITLE, fill=NAVY)
+    write_lines(draw, (x1 + 24, y1 + 64), lines, FONT_BODY, SLATE)
 
 
 def diamond(
@@ -86,24 +85,24 @@ def diamond(
 ) -> tuple[int, int, int, int]:
     cx, cy = center
     w, h = size
-    shadow_points = [
+    shadow = [
         (cx, cy - h // 2 + 8),
         (cx + w // 2, cy + 8),
         (cx, cy + h // 2 + 8),
         (cx - w // 2, cy + 8),
     ]
-    draw.polygon(shadow_points, fill=SHADOW)
-    points = [
+    draw.polygon(shadow, fill=SHADOW)
+    poly = [
         (cx, cy - h // 2),
         (cx + w // 2, cy),
         (cx, cy + h // 2),
         (cx - w // 2, cy),
     ]
-    draw.polygon(points, fill=SURFACE_SOFT)
+    draw.polygon(poly, fill=SURFACE_SOFT)
     title_box = draw.textbbox((0, 0), title, font=FONT_CARD_TITLE)
     title_width = title_box[2] - title_box[0]
     draw.text((cx - title_width / 2, cy - 42), title, font=FONT_CARD_TITLE, fill=NAVY)
-    draw_wrapped_lines(draw, cx - 146, cy - 2, lines, FONT_BODY, SLATE, gap=28)
+    write_lines(draw, (cx - 140, cy - 4), lines, FONT_BODY, SLATE, gap=28)
     return (cx - w // 2, cy - h // 2, cx + w // 2, cy + h // 2)
 
 
@@ -112,23 +111,24 @@ def arrow(
     start: tuple[int, int],
     end: tuple[int, int],
     label: str | None = None,
-    label_xy: tuple[int, int] | None = None,
+    label_pos: tuple[int, int] | None = None,
 ) -> None:
     draw.line((start, end), fill=ACCENT, width=8)
     x1, y1 = start
     x2, y2 = end
     if abs(x2 - x1) >= abs(y2 - y1):
-        sign = 1 if x2 > x1 else -1
-        head = [(x2, y2), (x2 - 22 * sign, y2 - 14), (x2 - 22 * sign, y2 + 14)]
+        direction = 1 if x2 > x1 else -1
+        head = [(x2, y2), (x2 - 22 * direction, y2 - 14), (x2 - 22 * direction, y2 + 14)]
     else:
-        sign = 1 if y2 > y1 else -1
-        head = [(x2, y2), (x2 - 14, y2 - 22 * sign), (x2 + 14, y2 - 22 * sign)]
+        direction = 1 if y2 > y1 else -1
+        head = [(x2, y2), (x2 - 14, y2 - 22 * direction), (x2 + 14, y2 - 22 * direction)]
     draw.polygon(head, fill=ACCENT)
-    if label and label_xy:
-        lx, ly = label_xy
+
+    if label and label_pos:
+        lx, ly = label_pos
         bbox = draw.textbbox((0, 0), label, font=FONT_TAG)
         pad_x = 12
-        pad_y = 7
+        pad_y = 6
         draw.rounded_rectangle(
             (lx, ly, lx + (bbox[2] - bbox[0]) + 2 * pad_x, ly + (bbox[3] - bbox[1]) + 2 * pad_y),
             radius=14,
@@ -142,58 +142,66 @@ def main() -> None:
     draw = ImageDraw.Draw(image)
 
     draw.rounded_rectangle((24, 24, WIDTH - 24, HEIGHT - 24), radius=38, outline=BORDER, width=3)
-    draw.text((56, 44), "Control Flow Implemented in robby.py", font=FONT_TITLE, fill=NAVY)
-    draw.text((56, 104), "Visual summary of the actual Raspberry Pi script, not an idealized flow.", font=FONT_SUBTITLE, fill=SLATE)
 
-    # Left rail
+    draw.text((56, 42), "Control Flow Implemented in robby.py", font=FONT_TITLE, fill=NAVY)
+    draw.text((56, 102), "Redesigned around the real loop so the diagram reads cleanly at a glance.", font=FONT_SUBTITLE, fill=SLATE)
+
+    # Top info row
     card(
         draw,
-        (56, 164, 398, 1270),
-        "Runtime truth",
+        (56, 164, 528, 294),
+        "Source of truth",
         [
-            "Source of truth: robby.py",
+            "This visual is based on the Raspberry Pi file",
+            "exported as robby.py.",
+        ],
+        fill=SURFACE_SOFT,
+    )
+    card(
+        draw,
+        (604, 164, 1060, 294),
+        "Validated constants",
+        [
             "speed = 0.8",
             "obstacle_distance_threshold = 10",
-            "Obstacle check is distance < 10",
-            "No left/right correction logic",
-            "time.sleep(0.05) runs only if the loop",
-            "does not hit a continue branch",
-            "",
-            "GPIO map",
-            "TRIG 23, ECHO 24",
-            "LED1 16, LED2 25",
-            "Buzzer 22",
-            "Left sensor 17",
-            "Right sensor 27",
-            "Robot left=(7, 8), right=(9, 10)",
+            "Obstacle branch uses distance < 10",
+        ],
+        fill=SURFACE_SOFT,
+    )
+    card(
+        draw,
+        (1136, 164, 1610, 294),
+        "Important behavior",
+        [
+            "No left/right steering correction exists.",
+            "sleep(0.05) runs only on the non-continue path.",
         ],
         fill=SURFACE_SOFT,
     )
 
-    # Main flow
+    # Center spine
     card(
         draw,
-        (456, 178, 900, 300),
+        (320, 354, 790, 466),
         "1. Measure distance",
         [
             "Call measure_distance().",
-            "HC-SR04 timeout returns 999 cm.",
+            "Return 999 cm on timeout.",
         ],
     )
     card(
         draw,
-        (456, 338, 900, 460),
+        (320, 522, 790, 634),
         "2. Read both line sensors",
         [
             "left_detect = int(not left_sensor.value)",
             "right_detect = int(not right_sensor.value)",
         ],
     )
-
     d1 = diamond(
         draw,
-        (678, 600),
-        (360, 150),
+        (555, 756),
+        (390, 158),
         "3. Lost-line branch?",
         [
             "left_detect == 0 and right_detect == 0",
@@ -202,8 +210,8 @@ def main() -> None:
     )
     d2 = diamond(
         draw,
-        (678, 820),
-        (360, 150),
+        (555, 944),
+        (390, 158),
         "4. Obstacle branch?",
         [
             "distance < 10",
@@ -212,8 +220,8 @@ def main() -> None:
     )
     d3 = diamond(
         draw,
-        (678, 1040),
-        (360, 150),
+        (555, 1130),
+        (390, 158),
         "5. Forward branch?",
         [
             "left_detect == 1 or right_detect == 1",
@@ -221,26 +229,25 @@ def main() -> None:
         ],
     )
 
+    # Right-side outcomes
     card(
         draw,
-        (980, 530, 1552, 654),
+        (972, 688, 1554, 804),
         "Stop + LEDs off + continue",
         [
             "robot.stop()",
-            "LED_PIN1 -> LOW",
-            "LED_PIN2 -> LOW",
-            "continue skips the sleep below",
+            "LED_PIN1 -> LOW, LED_PIN2 -> LOW",
+            "continue skips the final sleep",
         ],
         fill=GREEN,
     )
     card(
         draw,
-        (980, 742, 1552, 918),
+        (972, 882, 1554, 1028),
         "Stop + LEDs on + horn + continue",
         [
             "robot.stop()",
-            "LED_PIN1 -> HIGH",
-            "LED_PIN2 -> HIGH",
+            "LED_PIN1 -> HIGH, LED_PIN2 -> HIGH",
             "horn_sound()",
             "continue",
         ],
@@ -248,7 +255,7 @@ def main() -> None:
     )
     card(
         draw,
-        (980, 970, 1552, 1078),
+        (972, 1072, 1554, 1178),
         "Drive forward",
         [
             "robot.forward(speed)",
@@ -258,37 +265,36 @@ def main() -> None:
     )
     card(
         draw,
-        (980, 1140, 1552, 1270),
+        (972, 1200, 1554, 1260),
         "Else: stay stopped",
         [
             "robot.stop()",
-            "LED_PIN1 -> LOW, LED_PIN2 -> LOW",
         ],
         fill=SURFACE,
     )
 
+    # Footer note
     card(
         draw,
-        (456, 1140, 900, 1270),
+        (320, 1200, 790, 1260),
         "Loop tail and cleanup",
         [
-            "Only non-continue paths reach sleep(0.05).",
-            "KeyboardInterrupt and finally both call stop.",
-            "Then buzzer off + GPIO.cleanup().",
+            "Only the non-continue path reaches sleep(0.05).",
         ],
         fill=SURFACE_SOFT,
     )
 
-    # Arrows
-    arrow(draw, (678, 300), (678, 338))
-    arrow(draw, (678, 460), (678, d1[1]))
-    arrow(draw, (678, d1[3]), (678, d2[1]), label="No", label_xy=(708, 688))
-    arrow(draw, (678, d2[3]), (678, d3[1]), label="No", label_xy=(708, 908))
-    arrow(draw, (678, d3[3]), (678, 1140), label="No", label_xy=(708, 1110))
+    # Vertical spine arrows
+    arrow(draw, (555, 466), (555, 522))
+    arrow(draw, (555, 634), (555, d1[1]))
+    arrow(draw, (555, d1[3]), (555, d2[1]), label="No", label_pos=(586, 828))
+    arrow(draw, (555, d2[3]), (555, d3[1]), label="No", label_pos=(586, 1014))
+    arrow(draw, (555, d3[3]), (555, 1200), label="No", label_pos=(586, 1186))
 
-    arrow(draw, (d1[2], 600), (980, 592), label="Yes", label_xy=(824, 560))
-    arrow(draw, (d2[2], 820), (980, 830), label="Yes", label_xy=(824, 792))
-    arrow(draw, (d3[2], 1040), (980, 1024), label="Yes", label_xy=(824, 1000))
+    # Branch arrows
+    arrow(draw, (d1[2], 756), (972, 746), label="Yes", label_pos=(802, 718))
+    arrow(draw, (d2[2], 944), (972, 954), label="Yes", label_pos=(802, 916))
+    arrow(draw, (d3[2], 1130), (972, 1124), label="Yes", label_pos=(802, 1096))
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     image.save(OUTPUT, quality=95)

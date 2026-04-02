@@ -1,163 +1,188 @@
-<svg width="1600" height="1480" viewBox="0 0 1600 1480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1600" height="1400" viewBox="0 0 1600 1400" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="shell" x1="48" y1="40" x2="1524" y2="1440" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#141D2E"/>
-      <stop offset="1" stop-color="#0A1018"/>
+    <linearGradient id="paper" x1="64" y1="54" x2="1518" y2="1346" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F2E9"/>
+      <stop offset="1" stop-color="#EEE5D7"/>
     </linearGradient>
-    <radialGradient id="glowOne" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(200 120) rotate(24) scale(520 360)">
-      <stop stop-color="#1F3150"/>
-      <stop offset="1" stop-color="#1F3150" stop-opacity="0"/>
+    <radialGradient id="washA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(220 120) rotate(21) scale(520 260)">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="glowTwo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1360 1340) rotate(180) scale(420 260)">
-      <stop stop-color="#102137"/>
-      <stop offset="1" stop-color="#102137" stop-opacity="0"/>
+    <radialGradient id="washB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1390 1240) rotate(180) scale(380 240)">
+      <stop stop-color="#E6DACA"/>
+      <stop offset="1" stop-color="#E6DACA" stop-opacity="0"/>
     </radialGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
-      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#020711" flood-opacity="0.34"/>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#BCA98F" flood-opacity="0.18"/>
     </filter>
-    <marker id="arrBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
-      <path d="M0 0L10 5L0 10V0Z" fill="#78A6FF"/>
+    <marker id="arrowNavy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10V0Z" fill="#476C9E"/>
     </marker>
-    <marker id="arrAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
-      <path d="M0 0L10 5L0 10V0Z" fill="#FFB44E"/>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10V0Z" fill="#D78A30"/>
     </marker>
-    <marker id="arrCoral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
-      <path d="M0 0L10 5L0 10V0Z" fill="#FF7E61"/>
+    <marker id="arrowCoral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10V0Z" fill="#D4654F"/>
     </marker>
-    <marker id="arrMint" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
-      <path d="M0 0L10 5L0 10V0Z" fill="#3ED9A6"/>
+    <marker id="arrowMint" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10V0Z" fill="#2F9D7E"/>
     </marker>
-    <marker id="arrSlate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
-      <path d="M0 0L10 5L0 10V0Z" fill="#93A3C7"/>
+    <marker id="arrowSlate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10V0Z" fill="#7A869E"/>
     </marker>
     <style>
-      .eyebrow { fill: #A2B5D6; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
-      .title { fill: #F6F8FF; font-family: Georgia, "Times New Roman", serif; font-size: 58px; font-weight: 700; letter-spacing: -0.04em; }
-      .subtitle { fill: #AAB8D1; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 23px; }
-      .step { fill: #93A7CA; font-family: "Courier New", monospace; font-size: 16px; font-weight: 700; letter-spacing: 0.12em; }
-      .boxTitle { fill: #F4F8FF; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 30px; font-weight: 700; }
-      .boxBody { fill: #A2B4D4; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 20px; }
-      .diamondTitle { fill: #F4F8FF; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 27px; font-weight: 700; text-anchor: middle; }
-      .chipText { fill: #EFF4FF; font-family: "Courier New", monospace; font-size: 19px; font-weight: 700; }
-      .branch { fill: #F7FBFF; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
-      .loop { fill: #91A4CA; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+      .eyebrow { fill: #88785F; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+      .title { fill: #1F2B3F; font-family: Georgia, "Times New Roman", serif; font-size: 60px; font-weight: 700; letter-spacing: -0.04em; }
+      .subtitle { fill: #596579; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 24px; }
+      .label { fill: #758099; font-family: "Courier New", monospace; font-size: 15px; font-weight: 700; letter-spacing: 0.12em; }
+      .cardTitle { fill: #1E2A40; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 30px; font-weight: 700; }
+      .cardBody { fill: #556176; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 20px; }
+      .sideTitle { fill: #1E2A40; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 24px; font-weight: 700; }
+      .sideBody { fill: #5C677B; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 18px; }
+      .diamondText { fill: #1F2B3F; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 26px; font-weight: 700; text-anchor: middle; }
+      .chipText { fill: #22304A; font-family: "Courier New", monospace; font-size: 18px; font-weight: 700; }
+      .branch { fill: #FFFFFF; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+      .loopText { fill: #69758D; font-family: "Trebuchet MS", "Segoe UI", sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
     </style>
   </defs>
 
-  <rect width="1600" height="1480" fill="#09101A"/>
-  <rect width="1600" height="1480" fill="url(#glowOne)"/>
-  <rect width="1600" height="1480" fill="url(#glowTwo)"/>
+  <rect width="1600" height="1400" fill="#ECE4D8"/>
+  <rect width="1600" height="1400" fill="url(#washA)"/>
+  <rect width="1600" height="1400" fill="url(#washB)"/>
 
-  <rect x="32" y="32" width="1536" height="1416" rx="34" fill="url(#shell)" stroke="#22314A" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="32" y="32" width="1536" height="1336" rx="34" fill="url(#paper)" stroke="#D6C8B6" stroke-width="2"/>
+  <rect x="48" y="48" width="1504" height="1304" rx="28" stroke="#E8DED1"/>
 
-  <path d="M88 108H144" stroke="#FFB44E" stroke-width="6" stroke-linecap="round"/>
-  <text x="164" y="114" class="eyebrow">runtime flow</text>
-  <text x="88" y="186" class="title">robby.py branch order</text>
-  <text x="88" y="226" class="subtitle">The actual decision sequence from the Raspberry Pi script, with clean branch routing and no inferred behavior.</text>
+  <path d="M88 110H148" stroke="#D78A30" stroke-width="6" stroke-linecap="round"/>
+  <text x="168" y="116" class="eyebrow">runtime flow</text>
+  <text x="88" y="190" class="title">robby.py branch order</text>
+  <text x="88" y="232" class="subtitle">A calmer diagram of the Raspberry Pi loop, arranged as a readable sequence instead of a crowded code dump.</text>
 
-  <g filter="url(#shadow)">
-    <rect x="1064" y="84" width="154" height="50" rx="18" fill="#152239" stroke="#2A3A58"/>
-    <rect x="1232" y="84" width="218" height="50" rx="18" fill="#152239" stroke="#2A3A58"/>
-    <rect x="1064" y="148" width="386" height="50" rx="18" fill="#152239" stroke="#2A3A58"/>
+  <g filter="url(#cardShadow)">
+    <rect x="1050" y="84" width="154" height="48" rx="16" fill="#FFF9F1" stroke="#D8C9B5"/>
+    <rect x="1218" y="84" width="220" height="48" rx="16" fill="#FFF9F1" stroke="#D8C9B5"/>
+    <rect x="1050" y="146" width="388" height="48" rx="16" fill="#FFF9F1" stroke="#D8C9B5"/>
   </g>
-  <text x="1092" y="116" class="chipText">speed = 0.8</text>
-  <text x="1260" y="116" class="chipText">distance &lt; 10 cm</text>
-  <text x="1092" y="180" class="chipText">timeout fallback: 999 cm</text>
+  <text x="1080" y="115" class="chipText">speed = 0.8</text>
+  <text x="1248" y="115" class="chipText">distance &lt; 10 cm</text>
+  <text x="1080" y="177" class="chipText">timeout fallback: 999 cm</text>
 
-  <g filter="url(#shadow)">
-    <rect x="284" y="280" width="760" height="108" rx="24" fill="#101A2B" stroke="#2E3E5E" stroke-width="2"/>
+  <g filter="url(#cardShadow)">
+    <rect x="88" y="316" width="268" height="180" rx="24" fill="#FFF9F1" stroke="#DCCDBA"/>
+    <rect x="88" y="522" width="268" height="180" rx="24" fill="#FFF9F1" stroke="#DCCDBA"/>
+    <rect x="88" y="728" width="268" height="180" rx="24" fill="#FFF9F1" stroke="#DCCDBA"/>
+    <rect x="88" y="934" width="268" height="180" rx="24" fill="#FFF9F1" stroke="#DCCDBA"/>
   </g>
-  <text x="324" y="324" class="step">Step 00</text>
-  <text x="324" y="358" class="boxTitle">Read distance and both line sensors</text>
-  <text x="324" y="386" class="boxBody">distance = measure_distance() · left_detect = int(not left_sensor.value) · right_detect = int(not right_sensor.value)</text>
 
-  <path d="M664 388V450" stroke="#78A6FF" stroke-width="6" stroke-linecap="round" marker-end="url(#arrBlue)"/>
+  <rect x="112" y="340" width="58" height="8" rx="4" fill="#476C9E"/>
+  <text x="112" y="386" class="sideTitle">Sensor Read</text>
+  <text x="112" y="418" class="sideBody">The loop samples distance first, then maps</text>
+  <text x="112" y="444" class="sideBody">both line sensors into 0 or 1 states.</text>
 
-  <polygon points="664,468 874,578 664,688 454,578" fill="#0F1930" stroke="#4C70AB" stroke-width="3" filter="url(#shadow)"/>
-  <text x="664" y="558" class="diamondTitle">Both line sensors are inactive</text>
-  <text x="664" y="596" class="diamondTitle">and distance is above 10 cm?</text>
+  <rect x="112" y="546" width="58" height="8" rx="4" fill="#D78A30"/>
+  <text x="112" y="592" class="sideTitle">Early Exit</text>
+  <text x="112" y="624" class="sideBody">The first two branches end the cycle with</text>
+  <text x="112" y="650" class="sideBody">an immediate continue.</text>
 
-  <path d="M874 578H1018" stroke="#FFB44E" stroke-width="6" stroke-linecap="round" marker-end="url(#arrAmber)"/>
-  <rect x="914" y="536" width="56" height="30" rx="15" fill="#FFB44E"/>
-  <text x="930" y="557" class="branch">YES</text>
+  <rect x="112" y="752" width="58" height="8" rx="4" fill="#D4654F"/>
+  <text x="112" y="798" class="sideTitle">Strict Threshold</text>
+  <text x="112" y="830" class="sideBody">Obstacle logic is strict. The code checks</text>
+  <text x="112" y="856" class="sideBody">distance &lt; 10, not distance &lt;= 10.</text>
 
-  <g filter="url(#shadow)">
-    <rect x="1044" y="510" width="360" height="120" rx="24" fill="#141F31" stroke="#FFB44E" stroke-width="3"/>
+  <rect x="112" y="958" width="58" height="8" rx="4" fill="#2F9D7E"/>
+  <text x="112" y="1004" class="sideTitle">Motion Model</text>
+  <text x="112" y="1036" class="sideBody">There is no steering correction layer.</text>
+  <text x="112" y="1062" class="sideBody">The robot either moves forward or stops.</text>
+
+  <g filter="url(#cardShadow)">
+    <rect x="450" y="310" width="760" height="122" rx="24" fill="#FFFDF8" stroke="#D7C8B6"/>
   </g>
-  <text x="1078" y="548" class="step">01</text>
-  <text x="1078" y="584" class="boxTitle">Stop and continue</text>
-  <text x="1078" y="616" class="boxBody">robot.stop() + both LEDs low.</text>
+  <text x="488" y="350" class="label">Step 00</text>
+  <text x="488" y="382" class="cardTitle">Read distance and both line sensors</text>
+  <text x="488" y="408" class="cardBody">distance = measure_distance() · left_detect = int(not left_sensor.value)</text>
+  <text x="488" y="434" class="cardBody">right_detect = int(not right_sensor.value)</text>
 
-  <g filter="url(#shadow)">
-    <rect x="1100" y="660" width="248" height="48" rx="18" fill="#152239" stroke="#2A3A58"/>
+  <path d="M830 432V472" stroke="#476C9E" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowNavy)"/>
+
+  <polygon points="830,496 1010,590 830,684 650,590" fill="#F8FBFF" stroke="#476C9E" stroke-width="3"/>
+  <text x="830" y="580" class="diamondText">Both line sensors are inactive</text>
+  <text x="830" y="616" class="diamondText">and distance is above 10 cm?</text>
+
+  <path d="M1010 590H1078" stroke="#D78A30" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowAmber)"/>
+  <rect x="1004" y="548" width="56" height="28" rx="14" fill="#D78A30"/>
+  <text x="1021" y="568" class="branch">YES</text>
+
+  <g filter="url(#cardShadow)">
+    <rect x="1100" y="524" width="318" height="120" rx="24" fill="#FFF9F1" stroke="#D78A30" stroke-width="3"/>
+    <rect x="1148" y="668" width="222" height="46" rx="16" fill="#F7EFE4" stroke="#D8C8B5"/>
   </g>
-  <text x="1130" y="691" class="chipText">continue loop</text>
-  <path d="M1224 632V650" stroke="#FFB44E" stroke-width="6" stroke-linecap="round" marker-end="url(#arrAmber)"/>
+  <text x="1132" y="560" class="label">01</text>
+  <text x="1132" y="596" class="cardTitle">Stop and continue</text>
+  <text x="1132" y="626" class="cardBody">robot.stop() + both LEDs low.</text>
+  <text x="1182" y="698" class="chipText">continue loop</text>
+  <path d="M1259 644V658" stroke="#D78A30" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowAmber)"/>
 
-  <path d="M664 688V810" stroke="#78A6FF" stroke-width="6" stroke-linecap="round" marker-end="url(#arrBlue)"/>
-  <rect x="628" y="742" width="50" height="30" rx="15" fill="#1B2841"/>
-  <text x="643" y="763" class="branch">NO</text>
+  <path d="M830 684V782" stroke="#476C9E" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowNavy)"/>
+  <rect x="794" y="720" width="48" height="28" rx="14" fill="#6E7C94"/>
+  <text x="808" y="740" class="branch">NO</text>
 
-  <polygon points="664,828 874,938 664,1048 454,938" fill="#0F1930" stroke="#4C70AB" stroke-width="3" filter="url(#shadow)"/>
-  <text x="664" y="928" class="diamondTitle">Is the obstacle closer</text>
-  <text x="664" y="966" class="diamondTitle">than 10 cm?</text>
+  <polygon points="830,806 1010,900 830,994 650,900" fill="#F8FBFF" stroke="#476C9E" stroke-width="3"/>
+  <text x="830" y="890" class="diamondText">Is the obstacle closer</text>
+  <text x="830" y="926" class="diamondText">than 10 cm?</text>
 
-  <path d="M874 938H1018" stroke="#FF7E61" stroke-width="6" stroke-linecap="round" marker-end="url(#arrCoral)"/>
-  <rect x="914" y="904" width="56" height="30" rx="15" fill="#FF7E61"/>
-  <text x="930" y="925" class="branch">YES</text>
+  <path d="M1010 900H1078" stroke="#D4654F" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowCoral)"/>
+  <rect x="1004" y="858" width="56" height="28" rx="14" fill="#D4654F"/>
+  <text x="1021" y="878" class="branch">YES</text>
 
-  <g filter="url(#shadow)">
-    <rect x="1044" y="878" width="360" height="150" rx="24" fill="#141F31" stroke="#FF7E61" stroke-width="3"/>
+  <g filter="url(#cardShadow)">
+    <rect x="1100" y="834" width="318" height="148" rx="24" fill="#FFF9F1" stroke="#D4654F" stroke-width="3"/>
+    <rect x="1148" y="1006" width="222" height="46" rx="16" fill="#F7EFE4" stroke="#D8C8B5"/>
   </g>
-  <text x="1078" y="916" class="step">02</text>
-  <text x="1078" y="952" class="boxTitle">Obstacle stop</text>
-  <text x="1078" y="984" class="boxBody">robot.stop() + both LEDs high</text>
-  <text x="1078" y="1012" class="boxBody">+ horn_sound() + continue.</text>
+  <text x="1132" y="870" class="label">02</text>
+  <text x="1132" y="906" class="cardTitle">Obstacle stop</text>
+  <text x="1132" y="936" class="cardBody">robot.stop() + both LEDs high</text>
+  <text x="1132" y="964" class="cardBody">+ horn_sound() + continue.</text>
+  <text x="1182" y="1036" class="chipText">continue loop</text>
+  <path d="M1259 982V996" stroke="#D4654F" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowCoral)"/>
 
-  <g filter="url(#shadow)">
-    <rect x="1100" y="1056" width="248" height="48" rx="18" fill="#152239" stroke="#2A3A58"/>
+  <path d="M830 994V1092" stroke="#476C9E" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowNavy)"/>
+  <rect x="794" y="1030" width="48" height="28" rx="14" fill="#6E7C94"/>
+  <text x="808" y="1050" class="branch">NO</text>
+
+  <polygon points="830,1116 1010,1210 830,1304 650,1210" fill="#F8FBFF" stroke="#476C9E" stroke-width="3"/>
+  <text x="830" y="1200" class="diamondText">Is either line sensor</text>
+  <text x="830" y="1236" class="diamondText">currently active?</text>
+
+  <path d="M1010 1210H1078" stroke="#2F9D7E" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowMint)"/>
+  <rect x="1004" y="1168" width="56" height="28" rx="14" fill="#2F9D7E"/>
+  <text x="1021" y="1188" class="branch">YES</text>
+
+  <path d="M650 1210H514" stroke="#7A869E" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowSlate)"/>
+  <rect x="536" y="1168" width="48" height="28" rx="14" fill="#7A869E"/>
+  <text x="550" y="1188" class="branch">NO</text>
+
+  <g filter="url(#cardShadow)">
+    <rect x="124" y="1150" width="296" height="120" rx="24" fill="#FFF9F1" stroke="#7A869E" stroke-width="3"/>
   </g>
-  <text x="1130" y="1087" class="chipText">continue loop</text>
-  <path d="M1224 1030V1046" stroke="#FF7E61" stroke-width="6" stroke-linecap="round" marker-end="url(#arrCoral)"/>
+  <text x="156" y="1186" class="label">03A</text>
+  <text x="156" y="1222" class="cardTitle">Stay stopped</text>
+  <text x="156" y="1252" class="cardBody">robot.stop() + LEDs low.</text>
 
-  <path d="M664 1048V1168" stroke="#78A6FF" stroke-width="6" stroke-linecap="round" marker-end="url(#arrBlue)"/>
-  <rect x="628" y="1104" width="50" height="30" rx="15" fill="#1B2841"/>
-  <text x="643" y="1125" class="branch">NO</text>
-
-  <polygon points="664,1188 874,1298 664,1408 454,1298" fill="#0F1930" stroke="#4C70AB" stroke-width="3" filter="url(#shadow)"/>
-  <text x="664" y="1288" class="diamondTitle">Is either line sensor</text>
-  <text x="664" y="1326" class="diamondTitle">currently active?</text>
-
-  <path d="M874 1298H1018" stroke="#3ED9A6" stroke-width="6" stroke-linecap="round" marker-end="url(#arrMint)"/>
-  <rect x="914" y="1264" width="56" height="30" rx="15" fill="#3ED9A6"/>
-  <text x="930" y="1285" class="branch">YES</text>
-
-  <path d="M454 1298H320" stroke="#93A3C7" stroke-width="6" stroke-linecap="round" marker-end="url(#arrSlate)"/>
-  <rect x="350" y="1264" width="48" height="30" rx="15" fill="#93A3C7"/>
-  <text x="364" y="1285" class="branch">NO</text>
-
-  <g filter="url(#shadow)">
-    <rect x="92" y="1248" width="232" height="120" rx="24" fill="#131D30" stroke="#93A3C7" stroke-width="3"/>
+  <g filter="url(#cardShadow)">
+    <rect x="1100" y="1150" width="318" height="120" rx="24" fill="#FFF9F1" stroke="#2F9D7E" stroke-width="3"/>
   </g>
-  <text x="124" y="1286" class="step">03A</text>
-  <text x="124" y="1322" class="boxTitle">Stay stopped</text>
-  <text x="124" y="1354" class="boxBody">robot.stop() + LEDs low.</text>
+  <text x="1132" y="1186" class="label">03B</text>
+  <text x="1132" y="1222" class="cardTitle">Move forward</text>
+  <text x="1132" y="1252" class="cardBody">robot.forward(0.8) + LEDs low.</text>
 
-  <g filter="url(#shadow)">
-    <rect x="1044" y="1248" width="360" height="120" rx="24" fill="#141F31" stroke="#3ED9A6" stroke-width="3"/>
+  <path d="M272 1270V1312H660" stroke="#7A869E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowSlate)"/>
+  <path d="M1259 1270V1312H940" stroke="#2F9D7E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowMint)"/>
+
+  <g filter="url(#cardShadow)">
+    <rect x="660" y="1288" width="280" height="56" rx="22" fill="#FFF9F1" stroke="#D7C8B6"/>
   </g>
-  <text x="1078" y="1286" class="step">03B</text>
-  <text x="1078" y="1322" class="boxTitle">Move forward</text>
-  <text x="1078" y="1354" class="boxBody">robot.forward(0.8) + LEDs low.</text>
+  <text x="718" y="1324" class="chipText">time.sleep(0.05)</text>
 
-  <path d="M208 1368V1410H602" stroke="#93A3C7" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrSlate)"/>
-  <path d="M1224 1368V1410H886" stroke="#3ED9A6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrMint)"/>
-
-  <g filter="url(#shadow)">
-    <rect x="602" y="1380" width="284" height="56" rx="22" fill="#152239" stroke="#2A3A58"/>
-  </g>
-  <text x="658" y="1416" class="chipText">time.sleep(0.05)</text>
-
-  <path d="M602 1408H208V578H284" stroke="#5877AE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10" marker-end="url(#arrBlue)"/>
-  <text x="118" y="684" transform="rotate(-90 118 684)" class="loop">next loop cycle</text>
+  <path d="M660 1316H420V582H450" stroke="#476C9E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10" marker-end="url(#arrowNavy)"/>
+  <text x="418" y="620" class="loopText" transform="rotate(-90 418 620)">next loop cycle</text>
 </svg>

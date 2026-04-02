@@ -8,9 +8,9 @@ The real Raspberry Pi control script for a 2024 course project that follows a bl
 
 ## Project Snapshot
 
-- Course: `YBS 2013 - Bilgisayar Donanimi`
-- Original title: `Otonom Cizgi Takip ve Engel Algilama Robotu`
-- Institution: `Dokuz Eylul University`
+- Course: `YBS 2013 - Bilgisayar Donanımı`
+- Original title: `Otonom Çizgi Takip ve Engel Algılama Robotu`
+- Institution: `Dokuz Eylül Üniversitesi`
 - Project year: `2024`
 - Source of truth: Raspberry Pi project file `robby.py`
 - Runtime stack: `Python`, `gpiozero`, `RPi.GPIO`, `Raspberry Pi 4`
@@ -99,4 +99,3 @@ python3 robby.py
 ## Validation
 
 GitHub Actions runs a lightweight syntax check with `python -m py_compile robby.py` on every push and pull request.
-

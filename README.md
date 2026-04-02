@@ -37,7 +37,7 @@ Important implementation detail:
 ## Control Flow From The Real Script
 
 <p align="center">
-  <img src="docs/assets/control-flow.png" alt="Control flow diagram reconstructed directly from robby.py" width="100%">
+  <img src="docs/assets/runtime-flow.svg" alt="Control flow diagram reconstructed directly from robby.py" width="100%">
 </p>
 
 This flow mirrors the actual branch order in `motor_control()`:
